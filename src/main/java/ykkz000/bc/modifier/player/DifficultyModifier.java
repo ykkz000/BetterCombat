@@ -22,7 +22,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.Difficulty;
 import org.slf4j.Logger;
 import ykkz000.bc.modifier.Modifier;
 import ykkz000.bc.util.EntityUtil;
@@ -34,11 +33,9 @@ public class DifficultyModifier implements Modifier<ServerPlayerEntity> {
     private final UUID ATTRIBUTE_MODIFIER_UUID = UUID.fromString("D56FD3FC-77D4-2067-73BE-5FBCC64D3614");
     @SuppressWarnings("FieldCanBeLocal")
     private final String ATTRIBUTE_MODIFIER_NAME = "difficulty";
-    private Difficulty lastDifficulty = Difficulty.PEACEFUL;
 
     @Override
     public void modify(ServerPlayerEntity player) {
-        lastDifficulty = player.getServerWorld().getDifficulty();
         boolean success = EntityUtil.refreshAttributeModifier(player, EntityAttributes.GENERIC_MAX_HEALTH,
                 ATTRIBUTE_MODIFIER_UUID, ATTRIBUTE_MODIFIER_NAME,
                 false,
@@ -52,7 +49,7 @@ public class DifficultyModifier implements Modifier<ServerPlayerEntity> {
     }
 
     @Override
-    public boolean shouldModify(ServerPlayerEntity player) {
-        return player.getServerWorld().getDifficulty() != lastDifficulty;
+    public boolean shouldModify(ServerPlayerEntity obj) {
+        return true;
     }
 }

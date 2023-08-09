@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "survive",
+  "id": "bc",
   "version": "${version}",
-  "name": "Survive",
+  "name": "Better Combat",
   "description": "Provide better combat experience in survival mode.",
   "authors": [
     "ykkz000"

@@ -33,15 +33,13 @@ public class ExperienceLevelModifier implements Modifier<ServerPlayerEntity> {
     private final UUID ATTRIBUTE_MODIFIER_UUID = UUID.fromString("998FF82A-F6B3-0783-ECF0-314E98312D59");
     @SuppressWarnings("FieldCanBeLocal")
     private final String ATTRIBUTE_MODIFIER_NAME = "experience_level";
-    private int lastExperienceUpMaxHealthLevel = 0;
 
     @Override
     public void modify(ServerPlayerEntity player) {
-        lastExperienceUpMaxHealthLevel = getExperienceUpMaxHealthLevel(player);
         boolean success = EntityUtil.refreshAttributeModifier(player, EntityAttributes.GENERIC_MAX_HEALTH,
                 ATTRIBUTE_MODIFIER_UUID, ATTRIBUTE_MODIFIER_NAME,
                 false,
-                getExperienceUpMaxHealthLevel(player) * 2.0,
+                (double) (player.experienceLevel / 5) * 2.0,
                 EntityAttributeModifier.Operation.ADDITION);
         if (success) {
             player.setHealth(Math.min(player.getHealth(), player.getMaxHealth()));
@@ -51,11 +49,7 @@ public class ExperienceLevelModifier implements Modifier<ServerPlayerEntity> {
     }
 
     @Override
-    public boolean shouldModify(ServerPlayerEntity player) {
-        return getExperienceUpMaxHealthLevel(player)  != lastExperienceUpMaxHealthLevel;
-    }
-
-    private static int getExperienceUpMaxHealthLevel(ServerPlayerEntity player) {
-        return player.experienceLevel / 5;
+    public boolean shouldModify(ServerPlayerEntity obj) {
+        return true;
     }
 }
