@@ -20,6 +20,7 @@ package ykkz000.bc.mixin;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.world.World;
@@ -29,9 +30,14 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(ShieldItem.class)
-public abstract class ShieldItemMixin {
+public abstract class ShieldItemMixin extends Item {
     @Unique
     private static final int MAX_USE_TIME = 80;
+
+    public ShieldItemMixin(Settings settings) {
+        super(settings);
+    }
+
     /**
      * @author ykkz000
      * @reason Decrease the using time of the shield
