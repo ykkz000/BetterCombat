@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "ykkz000.bc.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "PlayerEntityMixin",
+    "ServerPlayerInteractionManagerMixin",
+    "ServerPlayNetworkHandlerMixin",
+    "ShieldItemMixin",
+    "SwordItemMixin",
+    "accessor.LivingEntityAccessor",
+    "events.ServerPlayerEntityMixin"
+  ],
+  "client": [
+    "client.ClientPlayerInteractionManagerMixin",
+    "client.GameRendererMixin",
+    "client.InGameHudMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
