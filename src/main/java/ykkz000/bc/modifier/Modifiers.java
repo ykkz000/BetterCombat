@@ -21,10 +21,7 @@ package ykkz000.bc.modifier;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.ActionResult;
 import ykkz000.bc.api.events.ServerPlayerTickEvents;
-import ykkz000.bc.modifier.player.ExperienceLevelModifier;
-import ykkz000.bc.modifier.player.HungerModifier;
-import ykkz000.bc.modifier.player.LowHPModifier;
-import ykkz000.bc.modifier.player.DifficultyModifier;
+import ykkz000.bc.modifier.player.*;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,6 +34,7 @@ public class Modifiers {
         PLAYER_MODIFIERS.add(new LowHPModifier());
         PLAYER_MODIFIERS.add(new DifficultyModifier());
         PLAYER_MODIFIERS.add(new ExperienceLevelModifier());
+        PLAYER_MODIFIERS.add(new HPFixModifier());
     }
     public static void initializeModifiers() {
         for (Modifier<ServerPlayerEntity> modifier : PLAYER_MODIFIERS) {

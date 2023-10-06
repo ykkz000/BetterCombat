@@ -41,9 +41,7 @@ public class DifficultyModifier implements Modifier<ServerPlayerEntity> {
                 false,
                 player.getServerWorld().getDifficulty().getId() * -4.0,
                 EntityAttributeModifier.Operation.ADDITION);
-        if (success) {
-            player.setHealth(Math.min(player.getHealth(), player.getMaxHealth()));
-        } else {
+        if (!success) {
             LOGGER.warn("Cannot find player {}'s attribute EntityAttributes.GENERIC_MAX_HEALTH.", player.getName());
         }
     }
