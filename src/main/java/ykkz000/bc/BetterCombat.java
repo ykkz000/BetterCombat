@@ -16,9 +16,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ykkz000.bc.modifier;
+package ykkz000.bc;
 
-public interface Modifier<T> {
-    void modify(T obj);
-    boolean shouldModify(T obj);
+import net.fabricmc.api.ModInitializer;
+import ykkz000.bc.adjustment.BetterCombatAdjustments;
+
+public class BetterCombat implements ModInitializer {
+    public static final String MOD_ID = "bc";
+    @Override
+    public void onInitialize() {
+        BetterCombatAdjustments.init();
+    }
 }

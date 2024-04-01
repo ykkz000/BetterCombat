@@ -1,6 +1,6 @@
 /*
- * BC
- * Copyright (C) 2023  ykkz000
+ * Better Combat
+ * Copyright (C) 2024  ykkz000
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +16,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ykkz000.bc.client;
+package ykkz000.bc.api.adjustment;
 
-import net.fabricmc.api.ClientModInitializer;
+import net.minecraft.server.network.ServerPlayerEntity;
 
-public class BCClient implements ClientModInitializer {
+public abstract class BasePlayerAdjustment implements Adjustment<ServerPlayerEntity> {
     @Override
-    public void onInitializeClient() {
+    public void modify(ServerPlayerEntity obj) {
+    }
 
+    @Override
+    public boolean shouldModify(ServerPlayerEntity obj) {
+        return false;
     }
 }

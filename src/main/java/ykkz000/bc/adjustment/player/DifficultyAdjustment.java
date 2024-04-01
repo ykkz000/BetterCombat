@@ -16,19 +16,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ykkz000.bc.modifier.player;
+package ykkz000.bc.adjustment.player;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.slf4j.Logger;
-import ykkz000.bc.modifier.Modifier;
+import ykkz000.bc.api.adjustment.BasePlayerAdjustment;
 import ykkz000.bc.util.EntityUtil;
 
 import java.util.UUID;
 
-public class DifficultyModifier implements Modifier<ServerPlayerEntity> {
+public class DifficultyAdjustment extends BasePlayerAdjustment {
     private static final Logger LOGGER = LogUtils.getLogger();
     private final UUID ATTRIBUTE_MODIFIER_UUID = UUID.fromString("D56FD3FC-77D4-2067-73BE-5FBCC64D3614");
     @SuppressWarnings("FieldCanBeLocal")

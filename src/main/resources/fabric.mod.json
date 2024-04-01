@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "bc",
+  "id": "better_combat",
   "version": "${version}",
   "name": "Better Combat",
   "description": "Provide better combat experience in survival mode.",
@@ -11,14 +11,14 @@
     "repo": "https://gitee.com/ykkz000/Survive"
   },
   "license": "GPL-3.0",
-  "icon": "assets/bc/icon.png",
+  "icon": "assets/better_combat/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "ykkz000.bc.client.BCClient"
+      "ykkz000.bc.client.BetterCombatClient"
     ],
     "main": [
-      "ykkz000.bc.BC"
+      "ykkz000.bc.BetterCombat"
     ]
   },
   "mixins": [

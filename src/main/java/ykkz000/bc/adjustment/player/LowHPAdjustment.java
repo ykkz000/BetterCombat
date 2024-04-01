@@ -52,14 +52,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ykkz000.bc.modifier.player;
+package ykkz000.bc.adjustment.player;
 
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.network.ServerPlayerEntity;
-import ykkz000.bc.modifier.Modifier;
+import ykkz000.bc.api.adjustment.BasePlayerAdjustment;
 
-public class LowHPModifier implements Modifier<ServerPlayerEntity> {
+public class LowHPAdjustment extends BasePlayerAdjustment {
     private int cooldown = 0;
     @Override
     public void modify(ServerPlayerEntity player) {

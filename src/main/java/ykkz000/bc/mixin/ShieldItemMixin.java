@@ -42,11 +42,13 @@ public abstract class ShieldItemMixin extends Item {
      * @author ykkz000
      * @reason Decrease the using time of the shield
      */
+    @Override
     @Overwrite
     public int getMaxUseTime(ItemStack stack) {
         return MAX_USE_TIME;
     }
 
+    @Override
     @Intrinsic(displace = true)
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (user instanceof PlayerEntity player) {
@@ -55,6 +57,7 @@ public abstract class ShieldItemMixin extends Item {
         return stack;
     }
 
+    @Override
     @Intrinsic(displace = true)
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         if (user instanceof PlayerEntity player) {

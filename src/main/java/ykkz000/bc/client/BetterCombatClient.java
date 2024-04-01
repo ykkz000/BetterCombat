@@ -16,14 +16,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package ykkz000.bc;
+package ykkz000.bc.client;
 
-import net.fabricmc.api.ModInitializer;
-import ykkz000.bc.modifier.Modifiers;
+import net.fabricmc.api.ClientModInitializer;
 
-public class BC implements ModInitializer {
+public class BetterCombatClient implements ClientModInitializer {
     @Override
-    public void onInitialize() {
-        Modifiers.initializeModifiers();
+    public void onInitializeClient() {
+
     }
 }
