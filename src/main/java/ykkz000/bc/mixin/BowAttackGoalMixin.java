@@ -18,12 +18,11 @@
 
 package ykkz000.bc.mixin;
 
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.BowAttackGoal;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
@@ -32,9 +31,10 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import ykkz000.bc.util.BowUtil;
 
 @Mixin(BowAttackGoal.class)
-public abstract class BowAttackGoalMixin {
+public abstract class BowAttackGoalMixin<T extends HostileEntity & RangedAttackMob> {
     @Shadow
     private int cooldown;
     @Shadow
@@ -49,13 +49,13 @@ public abstract class BowAttackGoalMixin {
     private boolean backward;
     @Final
     @Shadow
-    private float speed;
+    private double speed;
     @Final
     @Shadow
-    private int squaredRange;
+    private float squaredRange;
     @Final
     @Shadow
-    private MobEntity actor;
+    private T actor;
 
     /**
      * @author ykkz000
@@ -122,9 +122,9 @@ public abstract class BowAttackGoalMixin {
                     this.actor.clearActiveItem();
                 } else if (bl) {
                     int i = this.actor.getItemUseTime();
-                    if (i >= BowItemMixin.getPullTime(itemStack)) {
+                    if (i >= BowUtil.getPullTime(itemStack)) {
                         this.actor.clearActiveItem();
-                        ((RangedAttackMob)this.actor).shootAt(livingEntity, BowItemMixin.getPullProgress(i, itemStack));
+                        this.actor.shootAt(livingEntity, BowUtil.getPullProgress(i, itemStack));
                         this.cooldown = this.attackInterval;
                     }
                 }

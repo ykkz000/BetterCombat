@@ -34,7 +34,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
+import ykkz000.bc.util.BowUtil;
 
 @Mixin(BowItem.class)
 public abstract class BowItemMixin {
@@ -55,7 +55,7 @@ public abstract class BowItemMixin {
                 }
 
                 int i = this.getMaxUseTime(stack) - remainingUseTicks;
-                float f = getPullProgress(i, stack);
+                float f = BowUtil.getPullProgress(i, stack);
                 if (f >= 0.1) {
                     boolean bl2 = bl && itemStack.isOf(Items.ARROW);
                     if (!world.isClient) {
@@ -107,21 +107,5 @@ public abstract class BowItemMixin {
                 }
             }
         }
-    }
-
-    @Unique
-    protected static float getPullProgress(int useTicks, ItemStack stack) {
-        float f = (float)useTicks / (float)getPullTime(stack);
-        f = (f * f + f * 2.0F) / 3.0F;
-        if (f > 1.0F) {
-            f = 1.0F;
-        }
-        return f;
-    }
-
-    @Unique
-    protected static int getPullTime(ItemStack stack) {
-        int i = EnchantmentHelper.getLevel(Enchantments.QUICK_CHARGE, stack);
-        return 20 - 5 * i;
     }
 }

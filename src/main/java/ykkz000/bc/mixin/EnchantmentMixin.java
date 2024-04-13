@@ -40,8 +40,8 @@ public abstract class EnchantmentMixin {
     @Unique
     private static final Set<Pair<Identifier, Identifier>> EXTRA_ACCEPTABLE_ITEMS = new HashSet<>();
     static {
-        EXTRA_ACCEPTABLE_ITEMS.add(new Pair<>(getItemId(Items.BOW), getEnchantmentId(Enchantments.QUICK_CHARGE)));
-        EXTRA_ACCEPTABLE_ITEMS.add(new Pair<>(getItemId(Items.BOW), getEnchantmentId(Enchantments.PIERCING)));
+        EXTRA_ACCEPTABLE_ITEMS.add(new Pair<>(new Identifier("minecraft", "bow"), new Identifier("minecraft", "piercing")));
+        EXTRA_ACCEPTABLE_ITEMS.add(new Pair<>(new Identifier("minecraft", "bow"), new Identifier("minecraft", "quick_charge")));
     }
     @Inject(method = "isAcceptableItem(Lnet/minecraft/item/ItemStack;)Z", at = @At("HEAD"), cancellable = true)
     public void isAcceptableItem(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
